@@ -1,4 +1,4 @@
-public class Test3 {
+public class TestStringMethod {
     public static void main(String[] args){
         char[] c={'a','b','c','d','e','f'};
         int in=6;

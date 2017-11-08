@@ -1,4 +1,4 @@
-public class test1 {
+public class TestBaseDataType {
     public static void main(String[] args){
         byte i=(byte)(130*0.1);//算出来是doouble类型，需强制转换
         byte j=96;
