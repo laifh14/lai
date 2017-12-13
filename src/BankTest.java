@@ -1,3 +1,7 @@
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class BankTest {
     public static void main(String[] args){
         int accountNum=100;
@@ -13,6 +17,8 @@ public class BankTest {
 
 class Bank{
     private double[] account;
+    private Lock bankLock=new ReentrantLock();
+    private Condition sufficientFunds=bankLock.newCondition();
 
     public Bank(int num, double initial){
         account=new double[num];
@@ -21,21 +27,24 @@ class Bank{
         }
     }
 
-    public synchronized void transfer(int from,int to,double amount){
+    public  void transfer(int from,int to,double amount){
         try {
             if(account[from]<=amount){
                 System.out.println("账户余额不足！");
-                wait();
+                sufficientFunds.await();
              }
+            bankLock.lock();
             System.out.println("开始转账……");
             account[from]+=amount;
             Thread.sleep(300);
             account[to]-=amount;
             System.out.println(amount+" 从账户 "+to+" 转入到账户 "+from);
             System.out.println(Thread.currentThread().getName()+"：总余额为："+getTotal());
-            notifyAll();
+            sufficientFunds.signalAll();
         }catch (InterruptedException ie){
             ie.printStackTrace();
+        }finally {
+            bankLock.unlock();
         }
     }
 
