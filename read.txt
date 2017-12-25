@@ -35,3 +35,9 @@
 34、（12.20）完成了第二节学习，主要是如何进行文本格式的输入输出，PrintWriter类，以及字符格式的存储等。写了练习代码TextFileTest.java，还需完善。明天学习第三节内容读写二进制数据。
 35、（12.21）完成了第三节内容学习，二进制文件读写，包括DataInput和DataOutput，以及随机访问文件RandomAccessFile。明天学习第四节ZIP文档。
 36、（12.22）完成了zip文档一节内容学习，主要是ZipInputStream和ZipOutputStream的用法。完善了代码TextFileTest.java。明天学习下一节对象流与序列化。
+37、（12.25）完成了对象流与序列化第一节内容学习，主要是对象流的读取与存储，特别是有共享对象的情形，存储对象所属类需实现Serializable接口。编写了练习代码ObjectStreamTest.java。明天完成下一小节内容。
+
+
+
+
+
