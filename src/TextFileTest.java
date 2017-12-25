@@ -1,6 +1,7 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -69,7 +70,7 @@ public class TextFileTest {
     }
 }
 
-class Employee {
+class Employee implements Serializable{
     private String name;
     private double salary;
     private Date birthDate;
@@ -83,6 +84,10 @@ class Employee {
         GregorianCalendar calendar = new GregorianCalendar(year, month, date);
         Date date1=new Date(calendar.getTimeInMillis());
         birthDate=date1;
+    }
+
+    public void raiseSalary(double s){
+        this.salary+=s;
     }
 
     public String getName() {
